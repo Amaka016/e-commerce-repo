@@ -58,7 +58,7 @@ function toPrev() {
     });
 
     prevButton.addEventListener('click', () => {
-      slidesContainer.scrollBy({ left: -slideWidth * 2, behavior: 'smooth' });
+      slidesContainer.scrollBy({ left: -slideWidth * 1, behavior: 'smooth' });
     });
   });
 
