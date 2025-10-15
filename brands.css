@@ -1,0 +1,233 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.navbar-heading{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: .7em;
+}
+
+/* .nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+} */
+
+.navbar-contact-info > a{
+    color: white;
+    text-decoration: none;
+    padding-left: 2em;
+}
+
+.navbar-profile{
+    padding-right: 2em;
+    color: orange;
+}
+
+.navbar-profile .fa-user{
+    padding-right: 1em;
+    border-radius: 50%;
+}
+
+.navbar-space{
+    background-color: white;
+}
+
+.navbar-logo{
+    background-color: black;
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+    color: white;
+}
+
+.navbar-logo img{
+    padding-left: 2em;
+}
+
+.search{
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    height: 3em;
+    margin-top: 1em;
+}
+
+.search input{
+    background: black;
+    border-color: white;
+    outline: none;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 23em;
+    border-style: solid;
+}
+
+.search-icon{
+    color: black;
+    padding-top: .5em;
+    width: 2.5em;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.navbar-extras{
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding-right: 2.5em;
+}
+
+#location, #heart, #shopping{
+    padding-right: 1em;
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.navbar-products{
+    margin: .5em 3em auto 2em;
+}
+
+.navbar-products a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 3em;
+}
+
+.navbar-products a:hover{
+    color: orange;
+}
+
+.brands{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 30%;
+    text-align: center;
+    margin-left: 5em;
+    margin-top: 2em;
+}
+
+.brand-name{
+    font-weight: bolder;
+    font-size: 1.3em;
+    padding: .3em 0;
+}
+
+.brand-info{
+    font-size: .9em;
+    line-height: 1.5em;
+}
+
+.brands > div{
+    padding-bottom: 3em;
+}
+
+.brands > div:hover {
+    transform: translateY(-70px);
+    transition: 0.4s ease;
+    color: orange;
+    font-size: 1.1em;
+}
+
+.sec-container{
+    text-align: center;
+}
+
+.sec-container h1{
+    font-weight: bolder;
+    font-size: 3em;
+    margin-top: 1.2em;
+}
+
+.brand-stat{
+    text-align: center;
+    padding: 1em 3em;
+}
+
+
+.web-info{
+    background-color: black;
+    color: white;
+    padding: 3em 3em;
+    margin-top: 6em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.web-info a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden-option{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    border-radius: .7em;
+    padding: .5em .7em;
+    white-space: nowrap;
+    opacity: 0;
+    position: absolute;
+}
+
+.web-info ul{
+    list-style: none;
+}
+
+.web-info li{
+    padding-bottom: 1.2em;
+    font-size: 1.1em;
+}
+
+.display-hidden:hover .hidden-option{
+    opacity: 1;
+    transition: 0.4s ease;
+    transform: scale(1.1);
+}
+
+#whatsapp{
+    background-color: green;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+#instagram{
+    background-color: rgb(245, 107, 107);
+    padding: .3em;
+    border-radius: 3px; 
+    margin: 0 .5em; 
+}
+
+#twitter{
+    background-color: rgb(93, 170, 241);
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+.socials:hover {
+    transform: translateY(-15px);
+    transition: 0.4s ease-in-out;
+}
+
+.remark{
+    text-align: center;
+    margin: 1.5em 0;
+}
+
+

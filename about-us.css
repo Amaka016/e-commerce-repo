@@ -1,0 +1,291 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+.navbar-heading{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: .7em;
+}
+
+/* .nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+} */
+
+.navbar-contact-info > a{
+    color: white;
+    text-decoration: none;
+    padding-left: 2em;
+}
+
+.navbar-profile{
+    /* padding-left: 4em; */
+    padding-right: 2em;
+    color: orange;
+}
+
+.navbar-profile .fa-user{
+    padding-right: 1em;
+    border-radius: 50%;
+}
+
+.navbar-space{
+    background-color: white;
+}
+
+.navbar-logo{
+    background-color: black;
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+    color: white;
+}
+
+.navbar-logo img{
+    padding-left: 2em;
+}
+
+.search{
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    height: 3em;
+    margin-top: 1em;
+}
+
+.search input{
+    background: black;
+    border-color: white;
+    outline: none;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 23em;
+    border-style: solid;
+}
+
+.search-icon{
+    color: black;
+    padding-top: .5em;
+    width: 2.5em;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.navbar-extras{
+    font-size: 1.5em;
+    margin-top: 1em;
+    padding-right: 2.5em;
+}
+
+#location, #heart, #shopping{
+    padding-right: 1em;
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+.navbar-products{
+    margin: .5em 3em auto 2em;
+}
+
+.navbar-products a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 3em;
+}
+
+.navbar-products a:hover{
+    color: orange;
+}
+
+.our-story{
+    text-align: center;
+    margin-top: 4em;
+}
+
+.our-story h1{
+    font-size: 4em;
+}
+.story-and-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    margin: 2em 3em 0 10em;
+}
+
+.story-and-img img{
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.story-write-up{
+    font-size: .98em;
+    line-height: 1.4;
+    width: 54%;
+    text-align: left;
+    padding: 3.55em 3em 3em 1em;
+    border: 2px solid black;
+    margin-top: 1em;
+}
+
+.categories{
+    display: flex;
+    justify-content: space-around;
+    border: solid black 1px;
+    margin: 4em 10em 0 10em;
+}
+
+.category-info{
+    text-align: left;
+    padding: .8em .9em;
+    font-size: .9em;
+    line-height: 1.7;
+}
+
+ .icon{
+    font-size: 4em;
+    color: orange;
+    padding-left: .5em;
+ }
+
+ .info{
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding-left: .9em;
+    padding-top: 1.3em;
+ }
+ .even-spacing{
+    width: 100%;
+    padding-top: 6em;
+ }
+
+ .display-img{
+    margin: 3em 3em;
+    
+}
+
+.display-img img{
+    position: absolute; 
+}
+
+.display-img-txt{
+    position: absolute;
+    margin-top: 14em;
+    color: white;
+    margin-left: 23em;
+}
+
+.display-img-txt h1{
+    font-weight: bolder;
+    font-size: 4em;
+}
+
+.display-img-txt h6{
+    font-weight: bolder;
+    font-size: 1.5em;
+    padding-left: 5em;
+}
+
+.display-img-btn{
+background-color: orange;
+color: white;
+padding: .5em 1.5em;
+outline: none;
+border: none;
+text-align: center;
+margin: 3em 33em;
+border-radius: 30px;
+margin-left: 12em;
+}
+
+.display-img-btn:hover{
+    letter-spacing: 2px;
+}
+
+.web-info{
+    background-color: black;
+    color: white;
+    padding: 3em 3em;
+    margin-top: 37em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.web-info a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden-option{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    border-radius: .7em;
+    padding: .5em .7em;
+    white-space: nowrap;
+    opacity: 0;
+    position: absolute;
+}
+
+.web-info ul{
+    list-style: none;
+}
+
+.web-info li{
+    padding-bottom: 1.2em;
+    font-size: 1.1em;
+}
+
+.display-hidden:hover .hidden-option{
+    opacity: 1;
+    transition: 0.4s ease;
+    transform: scale(1.1);
+}
+
+#whatsapp{
+    background-color: green;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+#instagram{
+    background-color: rgb(245, 107, 107);
+    padding: .3em;
+    border-radius: 3px; 
+    margin: 0 .5em; 
+}
+
+#twitter{
+    background-color: rgb(93, 170, 241);
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+.socials:hover {
+    transform: translateY(-15px);
+    transition: 0.4s ease-in-out;
+}
+
+.remark{
+    text-align: center;
+    margin: 1.5em 0;
+}
