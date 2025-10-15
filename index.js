@@ -66,7 +66,7 @@ function toPrev() {
 
   //rotating promotional messages
   let navbarNotes = [
-    "Easy, convinient shopping",
+    "Easy, convenient shopping",
     "100% authentic products",
     "Secure payment options",
     "24/7 customer support"
