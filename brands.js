@@ -33,3 +33,20 @@ function startNavbarNotesRotation() {
 
 // Start rotation on page load
 startNavbarNotesRotation()
+
+let searchInput = document.querySelector('.search input')
+searchInput.addEventListener('keyup', filterItem)
+
+
+function filterItem() {
+    let searched = searchInput.value.toUpperCase()
+    let brandName = document.querySelectorAll('.brand')
+    for(let i = 0; i < brandName.length; i++) {
+        let name = brandName[i].textContent || brandName[i].innerText
+        if (name.toUpperCase().indexOf(searched) > -1 ){
+            brandName[i].style.display = ''
+        } else {
+            brandName[i].style.display = 'none'
+        }
+    }
+}
