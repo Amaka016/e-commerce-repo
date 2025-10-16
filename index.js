@@ -58,12 +58,15 @@ function toPrev() {
     });
 
     prevButton.addEventListener('click', () => {
-      slidesContainer.scrollBy({ left: -slideWidth * 2, behavior: 'smooth' });
+      slidesContainer.scrollBy({ left: -slideWidth * 1, behavior: 'smooth' });
     });
   });
 
+
+
+  //rotating promotional messages
   let navbarNotes = [
-    "Easy, convinient shopping",
+    "Easy, convenient shopping",
     "100% authentic products",
     "Secure payment options",
     "24/7 customer support"
@@ -97,3 +100,32 @@ function startNavbarNotesRotation() {
 
 // Start rotation on page load
 startNavbarNotesRotation()
+
+
+//filtering search
+let searchInput = document.querySelector('.search input')
+searchInput.addEventListener('keyup', filterItem)
+
+function filterItem() {
+  let searched = searchInput.value.toUpperCase()
+  let grid = document.querySelectorAll('.img-grid')
+  let slide = document.querySelectorAll('.slide-item')
+
+  for(let i = 0; i < grid.length; i++) {
+   let textContent = grid[i].textContent || grid[i].innerText
+   if (textContent.toUpperCase().indexOf(searched) > - 1) {
+    grid[i].style.display = ''
+   } else { 
+    grid[i].style.display = 'none'
+   }
+  }
+
+  for(let i = 0; i < slide.length; i++) {
+    let textContent = slide[i].innerHTML || slide[i].textContent
+    if(textContent.toUpperCase().indexOf(searched) > - 1) {
+      slide[i].style.display = ''
+    } else {
+      slide[i].style.display = 'none'
+    }
+  }
+}
