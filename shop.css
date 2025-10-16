@@ -121,7 +121,7 @@ i{
 }
 
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar{
   background:#fff;
   border-bottom:1px solid var(--stroke);
@@ -129,8 +129,7 @@ i{
   justify-content:space-between;
   align-items:center;
   padding:.7em;
-  z-index:15;      
-  margin-bottom: -50px;        
+  z-index:15;              
 }
 
 .nav-links{
@@ -164,6 +163,7 @@ i{
 @media (max-width:600px){
   .nav-links{ gap:20px; font-size:.95rem; }
 }
+
 
 
 /*  BODY  */
