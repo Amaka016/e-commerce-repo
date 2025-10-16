@@ -166,13 +166,9 @@
             align-items: center;
             text-align: left;
             height: 26em;
-            padding: 1em .4em;
-            width: 3em;
+            padding: 1em .6em;
             border: solid black 1px;
-}
-
-.slide-item p{
-    padding-left: .7em;
+            flex-shrink: 0;
 }
 
 .previous, .next {
@@ -208,15 +204,10 @@
 .orange{
     color: orange;
     font-weight: bold;
-    padding-top: .5em;
 }
 
 .btn-dark{
     width: 95%;
-}
-
-.btn-dark:hover{
-    background-color: orange;
 }
 
 .best-deals{
@@ -329,7 +320,7 @@ font-size: 5em;
     gap: 3em;
     justify-content: center;
     align-items: center;
-    padding-bottom: 3em;
+    padding-bottom: 3em; 
 }
 
 .img-grid{
