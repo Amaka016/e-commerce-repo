@@ -241,6 +241,11 @@ border-radius: 30px;
     color: white;
 }
 
+.check-deals a:hover{
+    text-decoration: none;
+    color: orange;
+}
+
 .slides-btn:hover{
     border: solid orange 1.5px;
     background-color: white;
