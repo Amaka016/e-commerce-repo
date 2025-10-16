@@ -57,6 +57,10 @@
     padding-left: 2em;
 }
 
+#shop-now{
+    text-decoration: none;
+    color: white;
+}
 .search{
     display: flex;
     background-color: white;

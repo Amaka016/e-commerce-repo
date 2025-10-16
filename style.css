@@ -114,6 +114,11 @@
     color: orange;
 }
 
+#shop-now{
+    text-decoration: none;
+    color: black;
+}
+
 .sec-container{
     display: flex;
     justify-content: center;
@@ -231,6 +236,11 @@ margin: 3em 33em;
 border-radius: 30px;
 }
 
+.check-deals a{
+    text-decoration: none;
+    color: white;
+}
+
 .slides-btn:hover{
     border: solid orange 1.5px;
     background-color: white;
@@ -245,6 +255,11 @@ border-radius: 30px;
     color: orange;
     /* transform: scale(1.1); */
     transition: 0.2s ease-in-out;
+}
+
+#add-to-cart{
+    text-decoration: none;
+    color: white;
 }
 
 .slides-btn{
