@@ -1,5 +1,5 @@
 //Filter-search//
-
+/*
   (function productSearch() {
     const form   = document.querySelector('.search-container form');
     const input  = form?.querySelector('input');
@@ -73,94 +73,51 @@
     filterProducts('');
   })();
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all add-to-cart buttons
-    const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
+  */
+
+
+//Rotating promotional messages on nav-bar//
+let navbarNotes = [
+  "Easy, convenient shopping",
+  "100% authentic products",
+  "Secure payment options",
+  "24/7 customer support"
+]
+
+let currentNoteIndex = 0
+let navbarNotesElement = document.querySelector('.navbar-notes p')
+let notesTimer = null
+let notesDelay = 3000
+
+function updateNavbarNote() {
+    // Add fade out effect
+    navbarNotesElement.style.transition = 'opacity 0.3s ease-in-out'
+    navbarNotesElement.style.opacity = '0'
     
-    addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Find the parent container
-            let productCard = this.closest('.slide-item');
-            if (!productCard) {
-                productCard = this.closest('.img-grid');
-            }
-            
-            if (productCard) {
-                // Get image
-                const img = productCard.querySelector('img');
-                const imageSrc = img ? img.src : '';
-                
-                // Get price
-                const priceElement = productCard.querySelector('.orange');
-                let price = 0;
-                if (priceElement) {
-                    const priceText = priceElement.textContent || priceElement.innerText;
-                    price = parseInt(priceText.replace(/\D/g, ''));
-                }
-                
-                // Get product name - improved extraction
-                let productName = 'Product';
-                const pElement = productCard.querySelector('p');
-                if (pElement) {
-                    // Get all text nodes
-                    let textContent = pElement.textContent || pElement.innerText;
-                    // Split by line breaks
-                    let lines = textContent.split(/\r?\n/).filter(line => line.trim());
-                    
-                    // Find product name (skip "New Arrival" and price lines)
-                    for (let i = 0; i < lines.length; i++) {
-                        let line = lines[i].trim();
-                        if (line && 
-                            line !== 'New Arrival' && 
-                            !line.match(/^[N₦]\s*[\d,]+/) && 
-                            line.length > 5) {
-                            productName = line;
-                            break;
-                        }
-                    }
-                }
-                
-                // Create product object
-                const product = {
-                    id: Date.now() + Math.random(),
-                    name: productName,
-                    price: price,
-                    quantity: 1,
-                    image: imageSrc
-                };
-                
-                // Get cart from localStorage
-                let cart = [];
-                try {
-                    const cartData = localStorage.getItem('cart');
-                    if (cartData) {
-                        cart = JSON.parse(cartData);
-                    }
-                } catch (error) {
-                    cart = [];
-                }
-                
-                // Check if item exists
-                const existingIndex = cart.findIndex(item => item.name === product.name);
-                if (existingIndex > -1) {
-                    cart[existingIndex].quantity += 1;
-                } else {
-                    cart.push(product);
-                }
-                
-                // Save to localStorage
-                try {
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                } catch (error) {
-                    alert('Failed to add item to cart');
-                    return;
-                }
-                
-                // Go to cart page
-                window.location.href = 'cart.html';
-            }
-        });
-    });
-});
+    setTimeout(function() {
+        // Change text
+        navbarNotesElement.textContent = navbarNotes[currentNoteIndex]
+        
+        // Fade in
+        navbarNotesElement.style.opacity = '1'
+        
+        // Move to next note
+        currentNoteIndex = (currentNoteIndex + 1) % navbarNotes.length
+    }, 300)
+}
+
+function startNavbarNotesRotation() {
+    notesTimer = setInterval(updateNavbarNote, notesDelay)
+}
+
+// Start rotation on page load
+startNavbarNotesRotation();
+
+
+
+
+
+
+
+
+
