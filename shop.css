@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap'); 
 *{
   margin: 0;
   padding: 0;
@@ -35,9 +34,53 @@ i{
     color: var(--text); 
 }
 
+/* NAV-BAR 1 */
+.navbar-heading{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: .9em;
+    padding-bottom: 17x;
+    margin-bottom: 34px;
+}
+
+/* .nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+} */
+
+.navbar-contact-info > a{
+    color: white;
+    text-decoration: none;
+    padding-left: 2em;
+}
+
+.navbar-profile{
+    padding-bottom: 10px;  
+    padding-right: 2em;
+    color: orange;
+    font-size: 16px;
+}
+
+.navbar-profile .ri-user-fill{
+    font-size: 17.7px;
+    color: orange;
+    padding-right: 13px;
+    border-radius: 50%;
+}
+
+.navbar-space{
+    background-color: white;
+}
+
+
 /* HEADER */
 .header{
-  position: sticky; 
+  /* position: sticky;  */
   top: 0;
   /* inset: 0 0 auto 0; */
   height: var(--header-h);
@@ -48,7 +91,7 @@ i{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 35px;
+  padding: 50.3px 35px;
   border-bottom: 1px solid rgba(231,200,133,.14);
   z-index: 50;
 }
@@ -72,24 +115,24 @@ i{
   align-items: center;
   justify-content: center;
   gap: 0px;
-  width: 100%;
+  /* width: 100%; */
   max-width: 500px;
 }
 .search-container input{
   flex: 1;
-  height: 44px;
-  width: 100%;
+  height: 50px;
+  width: 23em;
   background: #000;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   padding: 12px 14px;
-  color: var(--text);
+  color: #fff;
   font-size: 1rem;
   border-radius: 8px 0 0 8px;
   outline: none;
 }
 .search{
   min-width: 52px;
-  height: 44px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,18 +153,19 @@ i{
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 13px;
+  padding-right: 47px;
 }
 
 .profile-container i{
-  font-size: 22px;
+  font-size: 27px;
   padding: 8px;
   transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
   cursor: pointer;
 }
 
 
-/* ===== NAVBAR ===== */
+/* NAVBAR 2 */
 .navbar{
   background:#fff;
   border-bottom:1px solid var(--stroke);
@@ -334,7 +378,7 @@ button.btn:hover {
 
 
 /* footer */
-.footer {
+/* .footer {
   background: #000;
   color: #fff;
   padding: 60px 20px 25px;
@@ -405,14 +449,103 @@ button.btn:hover {
 
 .footer-bottom {
   text-align: center;
-  /* background: #fff; */
   border-top: 1px solid rgba(231,200,133,.15);
   margin-top: 40px;
   padding-top: 20px;
-}
+} 
 
 .footer-bottom p {
   color: #aaa;
   font-size: 14px;
+} */
+
+
+/* NEW-FOOTER */
+.web-info{
+    background-color: black;
+    font-size: 16.5px;
+    color: white;
+    padding: 4em 5em;
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-around;
 }
 
+.web-info a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.web-info #spacing{
+  line-height: 0.7cm;
+} 
+
+.hidden-option{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    border-radius: .7em;
+    padding: .5em .7em;
+    white-space: nowrap;
+    opacity: 0;
+    position: absolute;
+}
+
+.web-info ul{
+    list-style: none;
+}
+
+.web-info li{
+    padding-bottom: 1.5em;
+    font-size: 1.1em;
+    font-weight: lighter;
+}
+
+.web-info .first-list{
+  font-weight: 550;
+}
+
+.display-hidden:hover .hidden-option{
+    opacity: 1;
+    transition: 0.4s ease;
+    transform: scale(1.1);
+}
+
+.web-info #social-icons{
+  margin-top: 10px;
+}
+
+#whatsapp{
+    background-color: green;
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+#instagram{
+    background-color: rgb(245, 107, 107);
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px; 
+    margin: 0 .5em; 
+}
+
+#twitter{
+    background-color: rgb(93, 170, 241);
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+.socials:hover {
+    transform: translateY(-15px);
+    transition: 0.4s ease-in-out;
+}
+
+.remark{
+  padding: 2px;
+    text-align: center;
+    margin: 1.5em 0;
+    color: #131212;
+}
