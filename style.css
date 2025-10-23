@@ -2,9 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
 }
 
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 .navbar-heading{
     display: flex;
@@ -143,14 +146,13 @@
             display: flex;
             align-items: center;
             width: 90%;
-            max-width: 1200px;
             margin: 3em 0 0 5em;
         }
 
 .slides-container {
     display: flex;
-    align-items: center;
-    gap: 2em;
+    /* align-items: center;*/
+    gap: 2em; 
     overflow: hidden;
     transition: transform 0.3s ease-out;
     
@@ -225,6 +227,7 @@ border: none;
 text-align: center;
 margin: 3em 33em;
 border-radius: 30px;
+max-width: 300px;
 }
 
 .check-deals a{
@@ -309,23 +312,19 @@ font-size: 5em;
     text-align: left;
 }
 
-.shopping{
-    display: grid;
-    grid-template-columns: repeat(4, 4fr);
-    margin: 2em 6em 0 9em;
-}
-
 .first-flex{
-    display: flex;
-    gap: 3em;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 3em; 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 2em auto;
+    width: 80%;
+    justify-items: center;
+    
 }
 
 .img-grid{
     width: 13em;
     cursor: pointer;
+    padding-bottom: 3em; 
 }
 
 .quick-view{
@@ -356,13 +355,13 @@ font-size: 5em;
 }
 
 .slide.active{
-    display: inline-block;
+    display: block;
     position: absolute;
     object-fit: cover;
 }
 
 .slides{
-    margin: 1.4em 0 5em 4em;
+    margin: 1.4em auto 5em 4em;
     
 }
 
@@ -372,20 +371,26 @@ font-size: 5em;
 
 #nxt-btn{
     position: absolute;
-    top: 60%;
-    left: 90%;
-    margin-top: 5em;
+    margin-top: 10em;
+    right: 7%;
     color: white;
     font-weight: bolder;
 }
 
 #prev-btn{
     position: absolute;
-    top: 60%;
-    right: 90%;
-    margin-top: 5em;
+    margin-top: 10em;
+    left: 7%;
     color: white;
     font-weight: bolder;
+}
+
+#nxt-btn:hover,
+#prev-btn:hover,
+#slide2-nxt-btn:hover,
+#slide2-prev-btn:hover {
+  background: rgb(164, 99, 1);
+  color: white;
 }
 
 .display-img{
@@ -548,4 +553,318 @@ margin-left: 12em;
 .remark{
     text-align: center;
     margin: 1.5em 0;
+}
+
+
+ @media (max-width: 1023px) {
+    .first-flex{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .slide-item {
+    color: black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(50% - 1em);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid black 1px;
+    flex-shrink: 0;
+}
+
+.slides img{
+    margin-top: 1em;
+    width: 100%;
+  }
+
+  .slides{
+    margin: 0;
+    width: 100%;
+  }
+
+  #prev-btn{
+   left: 1em;
+    padding: .5em;
+  }
+
+  #nxt-btn{
+   right: 1em;
+    padding: .5em;
+  }
+
+  .slides-note{
+    font-size: .7em;
+    padding-top: 8em;
+  }
+
+  .navbar-contact-info #cus-supp{
+    opacity: 1;
+  }
+
+  .navbar-notes{
+    position: absolute;
+    margin-left: 23em;
+  }
+
+  .navbar-heading{
+    font-size: .9em;
+  }
+
+  .navbar-extras{
+    font-size: 1.3em;
+    padding-top: .1em;
+  }
+
+  .navbar-products{
+    font-size: 1em;
+  }
+
+  .sec-container{
+    font-size: .9em;
+    padding-top: 6em;
+  }
+  .sec-container h5 {
+    font-size: .1.2em;
+    font-weight: bolder;
+  }
+
+  .sec-container .fa-solid {
+    font-size: 2.2em;
+  }
+
+  .categories{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .vr {
+    display: none !important;
+  }
+
+  .hl{
+    display: block;
+    width: 100%;
+    height: .1em;
+    background-color: black;
+  }
+
+  .categories img{
+    width: 55%;
+    height: auto;
+    margin-left: 12em;
+  }
+
+  .categories p{
+    font-size: 1.2em;
+  }
+  #slide2-prev-btn{
+    margin-top: 130em;
+    padding: .5em;
+  }
+
+  #slide2-nxt-btn{
+    margin-top: 130em;
+    padding: .5em;
+  }
+
+.check-deals {
+        margin: .5em auto .5em 20em;
+        width: 90%;
+    }
+    
+    .slideshow-wrapper {
+        margin: 3em auto;
+        width: 95%;
+    }
+
+    .display-img{
+   margin: 0 !important;
+   width: 100%;
+}
+
+.display-img img{
+    width: 100%;
+    margin-top: 2em;
+}
+
+.sixth-container{
+     margin: 0 !important;
+   width: 100%;
+}
+    
+    .display-img-txt {
+        font-size: .5em; 
+        margin: 25em auto auto 33em;
+    }
+
+    .eighth-container {
+        padding-left: 1em;
+    }
+    
+    .about-web {
+        width: 90%;
+        margin-left: 1em;
+    }
+
+ }
+
+
+@media (max-width: 767px) {
+  .first-flex {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .slides img{
+    margin-top: 1em;
+    width: 100%;
+  }
+
+  .slides{
+    margin: 0;
+    width: 100%;
+  }
+
+  #prev-btn{
+    left: 1em;
+    padding: .3em;
+  }
+
+  #nxt-btn{
+    right: 1em;
+    padding: .3em;
+  }
+
+  .slides-note{
+    font-size: .5em;
+    padding-top: 14em;
+  }
+
+  .navbar-contact-info #cus-supp{
+    display: none;
+  }
+
+  .navbar-notes{
+    position: absolute;
+    margin-left: 23em;
+  }
+
+  .navbar-extras{
+    font-size: 1em;
+    padding-top: 2%;
+  }
+
+  .navbar-products{
+    font-size: 1em;
+  }
+
+  .sec-container{
+    font-size: .8em;
+    padding-top: 6em;
+  }
+  .sec-container h5 {
+    font-size: .9em;
+    font-weight: bolder;
+  }
+
+  .sec-container .fa-solid {
+    font-size: 1.4em;
+  }
+
+  .categories{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .vr {
+    display: none !important;
+  }
+
+  .hl{
+    display: block;
+    width: 100%;
+    height: .1em;
+    background-color: black;
+  }
+
+  .categories img{
+    width: 50%;
+    height: auto;
+    margin-left: 12em;
+  }
+
+  .categories p{
+    font-size: 1.2em;
+  }
+
+  .slide-item {
+            color: black;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            flex: 0 0 100%;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: solid black 1px;
+            flex-shrink: 0;
+}
+
+#slide2-prev-btn{
+    margin-top: 90em;
+    padding: .3em;
+  }
+
+  #slide2-nxt-btn{
+    margin-top: 90em;
+    padding: .3em;
+  }
+
+.check-deals {
+        margin: .5em auto .5em 15em;
+        width: 90%;
+    }
+    
+    .slideshow-wrapper {
+        margin: 3em auto;
+        width: 95%;
+    }
+
+.display-img{
+   margin: 0 !important;
+   width: 100%;
+}
+
+.display-img img{
+    width: 100%;
+    margin-top: 2em;
+}
+
+.sixth-container{
+     margin: 0 !important;
+   width: 100%;
+}
+    
+    .display-img-txt {
+        font-size: .5em; 
+        margin: 25em auto auto 30em;
+    }
+    
+    .eighth-container {
+        padding-left: 1em;
+    }
+    
+    .about-web {
+        width: 90%;
+        margin-left: 1em;
+    }
+
+    /* .web-info{
+        padding: .2em;
+    } */
 }
