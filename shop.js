@@ -1,6 +1,6 @@
 //Filter-search//
 
- /* (function productSearch() {
+    (function productSearch() {
     const form   = document.querySelector('.search-container form');
     const input  = form?.querySelector('input');
     const cards  = [...document.querySelectorAll('.product-content-cover')];
@@ -73,7 +73,7 @@
     filterProducts('');
   })();
 
-  */
+ 
 
 
 //Rotating promotional messages on nav-bar//

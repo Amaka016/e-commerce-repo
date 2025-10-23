@@ -910,39 +910,93 @@ mediaQuery.addListener(handleResponsive);
 handleResponsive(mediaQuery);
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('click', function(e) {
-        const target = e.target.closest('a[id="add-to-cart"]');
-        if (target) {
+    // Get all add-to-cart buttons
+    const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
+    
+    addToCartButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
             e.preventDefault();
-            const productCard = target.closest('.slide-item') || target.closest('.img-grid');
+            
+            // Find the parent container
+            let productCard = this.closest('.slide-item');
+            if (!productCard) {
+                productCard = this.closest('.img-grid');
+            }
+            
             if (productCard) {
+                // Get image
                 const img = productCard.querySelector('img');
+                const imageSrc = img ? img.src : '';
+                
+                // Get price
                 const priceElement = productCard.querySelector('.orange');
-                let productName = '';
+                let price = 0;
+                if (priceElement) {
+                    const priceText = priceElement.textContent || priceElement.innerText;
+                    price = parseInt(priceText.replace(/\D/g, ''));
+                }
+                
+                // Get product name - improved extraction
+                let productName = 'Product';
                 const pElement = productCard.querySelector('p');
                 if (pElement) {
-                    const textLines = pElement.textContent.split('\n').map(line => line.trim()).filter(line => line);
-                    for (let line of textLines) {
-                        if (line !== 'New Arrival' && !line.startsWith('N') && line.length > 3) {
+                    // Get all text nodes
+                    let textContent = pElement.textContent || pElement.innerText;
+                    // Split by line breaks
+                    let lines = textContent.split(/\r?\n/).filter(line => line.trim());
+                    
+                    // Find product name (skip "New Arrival" and price lines)
+                    for (let i = 0; i < lines.length; i++) {
+                        let line = lines[i].trim();
+                        if (line && 
+                            line !== 'New Arrival' && 
+                            !line.match(/^[N₦]\s*[\d,]+/) && 
+                            line.length > 5) {
                             productName = line;
                             break;
                         }
                     }
                 }
-                let price = 0;
-                if (priceElement) {
-                    price = parseInt(priceElement.textContent.replace(/[^\d]/g, ''));
+                
+                // Create product object
+                const product = {
+                    id: Date.now() + Math.random(),
+                    name: productName,
+                    price: price,
+                    quantity: 1,
+                    image: imageSrc
+                };
+                
+                // Get cart from localStorage
+                let cart = [];
+                try {
+                    const cartData = localStorage.getItem('cart');
+                    if (cartData) {
+                        cart = JSON.parse(cartData);
+                    }
+                } catch (error) {
+                    cart = [];
                 }
-                const imageSrc = img ? img.getAttribute('src') : 'https://via.placeholder.com/80';
-                const product = {id: Date.now() + Math.random(), name: productName, price: price, quantity: 1, image: imageSrc};
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-                const existingProduct = cart.find(item => item.name === product.name);
-                if (existingProduct) {existingProduct.quantity += 1;} else {cart.push(product);}
-                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Check if item exists
+                const existingIndex = cart.findIndex(item => item.name === product.name);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                // Save to localStorage
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (error) {
+                    alert('Failed to add item to cart');
+                    return;
+                }
+                
+                // Go to cart page
                 window.location.href = 'cart.html';
             }
-        }
+        });
     });
 });
-
-
