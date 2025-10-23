@@ -544,8 +544,6 @@ async function loadAllExternalProducts() {
     
     // Add the filenames you want to load
     await loadProductsFromFile('shop.html');
-    // await loadProductsFromFile('brands.html'); // Uncomment if needed
-    // await loadProductsFromFile('blog.html');   // Uncomment if needed
     
     externalProductsLoaded = true;
 }

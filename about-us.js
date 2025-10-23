@@ -37,7 +37,8 @@ startNavbarNotesRotation()
 // Get products from current page
 let listOfItems = document.querySelectorAll('.img-grid');
 let slideItems = document.querySelectorAll('.slide-item');
-let allProducts = [...listOfItems, ...slideItems];
+let productCovers = document.querySelectorAll('.product-content-cover');
+let allProducts = [...listOfItems, ...slideItems, ...productCovers];
 
 let searchInput = document.querySelector('.search input');
 
@@ -55,11 +56,12 @@ async function loadProductsFromFile(filename) {
         tempDiv.innerHTML = html;
         
         // Get products from the other file
-        const externalImgGrid = Array.from(tempDiv.querySelectorAll('.product-content-cover'));
+        const externalImgGrid = Array.from(tempDiv.querySelectorAll('.img-grid'));
         const externalSlideItems = Array.from(tempDiv.querySelectorAll('.slide-item'));
+        const internalSlideItems = Array.from(tempDiv.querySelectorAll('.product-content-cover'));
         
         // Add them to allProducts array
-        allProducts = [...allProducts, ...externalImgGrid, ...externalSlideItems];
+        allProducts = [...allProducts, ...externalImgGrid, ...externalSlideItems,...internalSlideItems];
         
         console.log(`Loaded ${externalImgGrid.length + externalSlideItems.length} products from ${filename}`);
         console.log(`Total products: ${allProducts.length}`);
@@ -74,7 +76,7 @@ async function loadAllExternalProducts() {
     
     // Add the filenames you want to load
     await loadProductsFromFile('shop.html');
-    // await loadProductsFromFile('brands.html'); // Uncomment if needed
+    await loadProductsFromFile('index.html'); // Uncomment if needed
     // await loadProductsFromFile('blog.html');   // Uncomment if needed
     
     externalProductsLoaded = true;
