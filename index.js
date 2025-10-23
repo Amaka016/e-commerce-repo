@@ -534,7 +534,7 @@ async function loadProductsFromFile(filename) {
         console.log(`Loaded ${externalImgGrid.length + externalSlideItems.length} products from ${filename}`);
         console.log(`Total products: ${allProducts.length}`);
     } catch (error) {
-        console.error(`Error loading products from ${shop.html}:`, error);
+        console.error(`Error loading products from "${filename}":`, error);
     }
 }
 
@@ -814,13 +814,14 @@ function createProductCard(item) {
         <img src="${img?.src || ''}" alt="${img?.alt || 'Product Image'}" style="
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 10px;
             margin-bottom: 1em;
         ">
         <h5 style="
             margin: 0.5em 0;
             font-size: 1.1em;
+            font-weight: bold;
             flex: 1;
             min-height: 3em;
             display: flex;
@@ -837,7 +838,7 @@ function createProductCard(item) {
             background-color: orange;
             color: white;
             border: none;
-            padding: 0.7em 1.5em;
+            padding: 0.4em 1.5em;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
@@ -908,7 +909,3 @@ function handleResponsive(e) {
 
 mediaQuery.addListener(handleResponsive);
 handleResponsive(mediaQuery);
-
-
-
-

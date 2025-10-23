@@ -348,7 +348,7 @@ function createProductCard(item) {
         <img src="${img?.src || ''}" alt="${img?.alt || 'Product Image'}" style="
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 10px;
             margin-bottom: 1em;
         ">
@@ -356,6 +356,7 @@ function createProductCard(item) {
             margin: 0.5em 0;
             font-size: 1.1em;
             flex: 1;
+            font-weight: bold;
             min-height: 3em;
             display: flex;
             align-items: center;
@@ -371,7 +372,7 @@ function createProductCard(item) {
             background-color: orange;
             color: white;
             border: none;
-            padding: 0.7em 1.5em;
+            padding: 0.4em 1.5em;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;

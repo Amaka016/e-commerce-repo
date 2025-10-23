@@ -816,12 +816,14 @@ margin-left: 12em;
 }
 
 #slide2-prev-btn{
-    margin-top: 90em;
+    /* margin-top: 90em; */
+    top: 391em;
     padding: .3em;
   }
 
   #slide2-nxt-btn{
-    margin-top: 90em;
+    /* margin-top: 10em; */
+    top: 391em;
     padding: .3em;
   }
 
