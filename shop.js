@@ -1,3 +1,4 @@
+//Filter-search//
 
   (function productSearch() {
     const form   = document.querySelector('.search-container form');
