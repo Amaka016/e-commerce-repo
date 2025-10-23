@@ -909,6 +909,40 @@ function handleResponsive(e) {
 mediaQuery.addListener(handleResponsive);
 handleResponsive(mediaQuery);
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('a[id="add-to-cart"]');
+        if (target) {
+            e.preventDefault();
+            const productCard = target.closest('.slide-item') || target.closest('.img-grid');
+            if (productCard) {
+                const img = productCard.querySelector('img');
+                const priceElement = productCard.querySelector('.orange');
+                let productName = '';
+                const pElement = productCard.querySelector('p');
+                if (pElement) {
+                    const textLines = pElement.textContent.split('\n').map(line => line.trim()).filter(line => line);
+                    for (let line of textLines) {
+                        if (line !== 'New Arrival' && !line.startsWith('N') && line.length > 3) {
+                            productName = line;
+                            break;
+                        }
+                    }
+                }
+                let price = 0;
+                if (priceElement) {
+                    price = parseInt(priceElement.textContent.replace(/[^\d]/g, ''));
+                }
+                const imageSrc = img ? img.getAttribute('src') : 'https://via.placeholder.com/80';
+                const product = {id: Date.now() + Math.random(), name: productName, price: price, quantity: 1, image: imageSrc};
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const existingProduct = cart.find(item => item.name === product.name);
+                if (existingProduct) {existingProduct.quantity += 1;} else {cart.push(product);}
+                localStorage.setItem('cart', JSON.stringify(cart));
+                window.location.href = 'cart.html';
+            }
+        }
+    });
+});
 
 
