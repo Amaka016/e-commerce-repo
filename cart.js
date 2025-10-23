@@ -51,7 +51,7 @@ function renderCart(){
             <img scr="${item.imamge}" alt="${item.name}" class"item-image">
             <div class"item-details">
                 <div class="item-name">${item.name}</div>
-                <div class="item-price">$${item.price.toFixed(2)}</div>
+                <div class="item-price">$${item.price.to.Localestring()}</div>
             </div>
             <div class"item-controls">
                 <div class="quantity-control">
@@ -107,3 +107,4 @@ function goToCheckout() {
 }
 
 document.addEventListener('DOMContentLoaded', renderCart);
+
