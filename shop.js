@@ -73,6 +73,8 @@
     filterProducts('');
   })();
 
+  */
+
 
 //Rotating promotional messages on nav-bar//
 let navbarNotes = [
@@ -111,7 +113,7 @@ function startNavbarNotesRotation() {
 // Start rotation on page load
 startNavbarNotesRotation();
 
-*/
+
 
 
 
