@@ -9,7 +9,15 @@
 <body>
     <header>
         <div class="container">
-            <a href="index.html"><img src="img/wine1-removebg-preview.png" alt="wine-logo" height="80px" width="140px"></a>
+            <h1><a href="index.html" style="color: white; text-decoration: none;">Liquor Store</a></h1>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="about-us.html">About Us</a>
+                <a href="shop.html">Shop</a>
+                <a href="brands.html">Brands</a>
+                <a href="cart.html" class="active">Cart</a>
+            </nav>
             <div class="cart-icon">
                 <span id="cartCount">0</span>
             </div>
@@ -21,7 +29,7 @@
 
         <div id="cartEmpty" class="empty-cart">
             <p>Your Cart Is Empty</p>
-            <button onclick="location.href='shop.html'" class="btn-secondary">Continue Shopping</button>
+            <button onclick="location.href='checkout.html'" class="btn-secondary">Continue Shopping</button>
         </div>
 
         <div id="cartContent" class="cart-content" style="display: none;">
@@ -30,15 +38,15 @@
             <div class="cart-summary">
                 <div class="summary-row">
                     <span>Subtotal:</span>
-                    <span id="subtotal">$0.00</span>
+                    <span id="subtotal">N0</span>
                 </div>
                 <div class="summary-row">
                     <span>Tax:</span>
-                    <span id="tax">$0.00</span>
+                    <span id="tax">N0</span>
                 </div>
                 <div class="summary-row total">
                     <span>Total:</span>
-                    <span id="total">$0.00</span>
+                    <span id="total">N0</span>
                 </div>
                 <button onclick="goToCheckout()" class="btn-primary">Proceed To Checkout</button>
             </div>
@@ -46,4 +54,8 @@
     </main>
     <script src="./cart.js"></script>
 </body>
+
 </html>
+
+
+
