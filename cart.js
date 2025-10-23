@@ -1,10 +1,34 @@
-let cart = [
-    {id: 1, name: "Premium Whiskey", price: 45.99, quantity: 1, Image: "https://via.placeholder.com/80"},
-    {id: 2, name: "Red Wine", price: 28.50, quantity: 2, Image:"https://via.placeholder.com/80"},
-    {id: 3, name: "Carft Beer (6-pack)", price: 12.99, quantity: 1, image:"https://via.placeholder.com/80"}
-];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 const TAX_RATE = 0.08; // 8% tax
+
+window.addEventListener('storage', function(e){
+    if (e.key=== 'cart'){
+        cart = JSON.parse(e.newValue) || [];
+    }
+});
+
+(function(){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has('addProduct')){
+        const productData = {
+            id : Date.now(),
+            name: decodeURIComponent(urlParams.get('name') || 'Product'),
+            price: parseInt(urlParams.get('price')) || 0,
+            Image: decodeURIComponent(urlParams.get('image') || 'https://via.placeholder.com/80')
+        };
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(item => item.name === productData.name);
+        if (existingItem){
+            existingItem.quantity += 1;
+        } else{
+            cart.push(productData);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.history.replaceState({}, document.title, 'cart.html');
+    }
+}) ();
 
 function renderCart(){
     const cartItemsDiv = document.getElementById('cartItems');
@@ -27,7 +51,7 @@ function renderCart(){
             <img scr="${item.imamge}" alt="${item.name}" class"item-image">
             <div class"item-details">
                 <div class="item-name">${item.name}</div>
-                <div class="item-price">$${item.price.toFixed(2)}</div>
+                <div class="item-price">$${item.price.to.Localestring()}</div>
             </div>
             <div class"item-controls">
                 <div class="quantity-control">
@@ -65,9 +89,9 @@ function updateSummary() {
     const tax = subtotal * TAX_RATE;
     const total = subtotal + tax;
 
-    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('tax'). textContent = `$${tax.toFixed(2)}`;
-    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+    document.getElementById('subtotal').textContent = `N${subtotal.toLocalestring()}`;
+    document.getElementById('tax'). textContent = `N${total.toLocalestring()}`;
+    document.getElementById('total').textContent = `N${total.toLocalestring()}`;
 }
 
 function goToCheckout() {
@@ -81,4 +105,6 @@ function goToCheckout() {
     sessionStorage.setItem('checkoutData', JSON.stringify(cartData));
     window.location.href= 'checkout.html';
 }
+
 document.addEventListener('DOMContentLoaded', renderCart);
+

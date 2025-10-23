@@ -914,4 +914,3 @@ handleResponsive(mediaQuery);
 
 
 
-  

@@ -21,15 +21,15 @@ function renderOrderSummary(){
                 <div class="item-name">${item.name}</div>
                 <div class="item-quantity">Quantity: ${item.quantity}</div>
             </div>
-            <div class="item-price"> ${(item.price * item.quantity).toFixed(2)}</div>
+            <div class="item-price">N${(item.price).toLocalestring()}</div>
         </div>        
         `).join('');
 
         const total = data.subtotal + data.tax;
 
-        document.getElementById('summarySubtotal'). textContent = `$${data.subtotal.toFixed(2)}`;
-        document.getElementById('summaryTax').textContent = `$${data.tax.toFixed(2)}`;
-        document.getElementById('summaryTotal').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('summarySubtotal'). textContent = `N${data.subtotal.toLocalestring()}`;
+        document.getElementById('summaryTax').textContent = `N${data.subtotal.toLocalestring()}`;
+        document.getElementById('summaryTotal').textContent = `N${data.subtotal.toLocalestring()}`;
 }
 
 function handleCheckoutSubmit(e) {
@@ -62,4 +62,5 @@ function handleCheckoutSubmit(e) {
 document.addEventListener('DOMContentLoaded', function() {
     renderOrderSummary();
     document.getElementById('checkoutForm').addEventListener('submit', handleCheckoutSubmit);
+
 });
