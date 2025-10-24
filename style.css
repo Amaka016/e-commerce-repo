@@ -653,7 +653,7 @@ margin-left: 12em;
   }
 
   .categories img{
-    width: 55%;
+    width: 60%;
     height: auto;
     margin-left: 12em;
   }
@@ -662,12 +662,12 @@ margin-left: 12em;
     font-size: 1.2em;
   }
   #slide2-prev-btn{
-    margin-top: 130em;
+    top: 595em;
     padding: .5em;
   }
 
   #slide2-nxt-btn{
-    margin-top: 130em;
+    top: 595em;
     padding: .5em;
   }
 
@@ -698,7 +698,7 @@ margin-left: 12em;
     
     .display-img-txt {
         font-size: .5em; 
-        margin: 25em auto auto 33em;
+        margin: 25em auto auto 45em;
     }
 
     .eighth-container {
@@ -817,13 +817,13 @@ margin-left: 12em;
 
 #slide2-prev-btn{
     /* margin-top: 90em; */
-    top: 391em;
+    top: 523em;
     padding: .3em;
   }
 
   #slide2-nxt-btn{
     /* margin-top: 10em; */
-    top: 391em;
+    top: 523em;
     padding: .3em;
   }
 
