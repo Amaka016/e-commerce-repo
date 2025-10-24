@@ -554,7 +554,7 @@ button.btn:hover {
 
 
 
-/* Hamburger button */
+Hamburger button
 .hamburger{
   display: none; /* show on small screens below */
   align-items: center; justify-content: center;
@@ -586,44 +586,6 @@ button.btn:hover {
   }
 }
 }
-
-
-
-
-/*NAV SIDE-BAR*/
-.drawer{
-  position: fixed; inset: 0 auto 0 0; height: 100vh; width: 78vw; max-width: 320px;
-  background:#0b0b0b; color:#fff; border-right: 1px solid rgba(231,200,133,.18);
-  transform: translateX(-100%); transition: transform .28s ease;
-  z-index: 999;
-  display: flex; flex-direction: column;
-}
-.drawer.is-open{ transform: translateX(0) }
-
-.drawer__nav{ padding: 14px }
-.drawer__close{
-  align-self: flex-end; font-size: 28px; line-height: 1; width: 40px; height: 40px;
-  border:1px solid rgba(255,255,255,.25); border-radius: 10px; background: transparent; color:#fff;
-  cursor: pointer;
-}
-.drawer__links{
-  list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px;
-}
-.drawer__links a{
-  display:block; padding: 12px 10px; border-radius: 10px; color:#fff;
-  background: transparent; border:1px solid transparent;
-}
-.drawer__links a:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.12) }
-
-/* Backdrop behind drawer */
-.drawer-backdrop{
-  position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 998;
-}
-.drawer-backdrop[hidden]{ display:none }
-
-/* Prevent body scroll when drawer open */
-.no-scroll{ overflow: hidden }
-
 
 
 
