@@ -110,6 +110,52 @@
 // });
 
 
+
+
+
+
+//Rotating promotional messages on nav-bar//
+let navbarNotes = [
+  "Easy, convenient shopping",
+  "100% authentic products",
+  "Secure payment options",
+  "24/7 customer support"
+]
+
+let currentNoteIndex = 0
+let navbarNotesElement = document.querySelector('.navbar-notes p')
+let notesTimer = null
+let notesDelay = 3000
+
+function updateNavbarNote() {
+    // Add fade out effect
+    navbarNotesElement.style.transition = 'opacity 0.3s ease-in-out'
+    navbarNotesElement.style.opacity = '0'
+    
+    setTimeout(function() {
+        // Change text
+        navbarNotesElement.textContent = navbarNotes[currentNoteIndex]
+        
+        // Fade in
+        navbarNotesElement.style.opacity = '1'
+        
+        // Move to next note
+        currentNoteIndex = (currentNoteIndex + 1) % navbarNotes.length
+    }, 300)
+}
+
+function startNavbarNotesRotation() {
+    notesTimer = setInterval(updateNavbarNote, notesDelay)
+}
+
+// Start rotation on page load
+startNavbarNotesRotation()
+
+
+
+
+
+
 let searchInput = document.querySelector('.search-container input');
 
 // Track if we've already loaded external products
@@ -527,3 +573,64 @@ function handleResponsive(e) {
 
 mediaQuery.addListener(handleResponsive);
 handleResponsive(mediaQuery);
+
+
+
+
+(() => {
+  const btn = document.getElementById('menuToggle');
+  const drawer = document.getElementById('mobileDrawer');
+  const closeBtn = document.getElementById('menuClose');
+  const backdrop = document.getElementById('drawerBackdrop');
+  if (!btn || !drawer || !backdrop) return;
+
+  const focusable = () => drawer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+  let lastFocused = null;
+
+  function openDrawer(){
+    lastFocused = document.activeElement;
+    drawer.classList.add('is-open');
+    backdrop.hidden = false;
+    document.body.classList.add('no-scroll');
+    btn.setAttribute('aria-expanded','true');
+    drawer.setAttribute('aria-hidden','false');
+    // focus first link
+    const first = focusable()[0];
+    first && first.focus();
+  }
+
+  function closeDrawer(){
+    drawer.classList.remove('is-open');
+    backdrop.hidden = true;
+    document.body.classList.remove('no-scroll');
+    btn.setAttribute('aria-expanded','false');
+    drawer.setAttribute('aria-hidden','true');
+    lastFocused && lastFocused.focus();
+  }
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    open ? closeDrawer() : openDrawer();
+  });
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  // Close on ESC; trap focus inside drawer when open
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+    if (e.key === 'Tab' && drawer.classList.contains('is-open')){
+      const nodes = Array.from(focusable());
+      if (!nodes.length) return;
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+    }
+  });
+
+  // Close when a nav link is clicked
+  drawer.addEventListener('click', (e) => {
+    if (e.target.closest('a')) closeDrawer();
+  });
+})();
+
+

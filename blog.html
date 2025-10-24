@@ -35,6 +35,13 @@
     <div class="logo-container">
       <a href="index.html"><img src="img/wine1-removebg-preview.png" alt="wine-logo" height="85px" width="119px"></a>
     </div>
+    
+    <!-- HAMBURGER BUTTON -->
+    <button class="hamburger" id="menuToggle"
+        aria-label="Open menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <i class="ri-menu-line"></i>
+  <span></span><span></span><span></span>
+</button>
 
     <!-- SEARCH BOX -->
     <div class="search-container">
@@ -313,6 +320,24 @@
     </div>
   </footer>
   </div> -->
+
+  <!-- SIDE DRAWER -->
+<aside id="mobileDrawer" class="drawer" aria-hidden="true">
+  <nav class="drawer__nav">
+    <button class="drawer__close" id="menuClose" aria-label="Close menu">×</button>
+    <ul class="drawer__links">
+      <!-- Reuse the same links as your top navbar -->
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<!-- BACKDROP -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
 
   <script src="blog.js"></script>
 </body>

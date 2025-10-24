@@ -549,3 +549,177 @@ button.btn:hover {
     margin: 1.5em 0;
     color: #131212;
 }
+
+
+
+
+
+/* Hamburger button */
+.hamburger{
+  display: none; /* show on small screens below */
+  align-items: center; justify-content: center;
+  width: 42px; height: 42px; border:1px solid rgba(255,255,255,.25);
+  border-radius: 10px; background: transparent; cursor: pointer;
+}
+
+
+/* Turn into "X" when [aria-expanded="true"] */
+.hamburger[aria-expanded="true"] span:nth-child(1){ transform: translateY(6px) rotate(45deg) }
+.hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0 }
+.hamburger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-6px) rotate(-45deg) }
+
+/* Show hamburger on small screens, hide on >=768px */
+@media (max-width: 768px){
+  .hamburger{ display:inline-flex }
+  /* optional: tighten header padding so everything fits */
+  .header{ padding: 16px 12px; }
+
+  @media (max-width: 768px) {
+  /* Hide the nav links */
+  .nav-links {
+    display: none;
+  }
+
+  /* Ensure the hamburger shows */
+  .hamburger {
+    display: inline-flex !important;
+  }
+}
+}
+
+
+
+
+/*NAV SIDE-BAR*/
+.drawer{
+  position: fixed; inset: 0 auto 0 0; height: 100vh; width: 78vw; max-width: 320px;
+  background:#0b0b0b; color:#fff; border-right: 1px solid rgba(231,200,133,.18);
+  transform: translateX(-100%); transition: transform .28s ease;
+  z-index: 999;
+  display: flex; flex-direction: column;
+}
+.drawer.is-open{ transform: translateX(0) }
+
+.drawer__nav{ padding: 14px }
+.drawer__close{
+  align-self: flex-end; font-size: 28px; line-height: 1; width: 40px; height: 40px;
+  border:1px solid rgba(255,255,255,.25); border-radius: 10px; background: transparent; color:#fff;
+  cursor: pointer;
+}
+.drawer__links{
+  list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px;
+}
+.drawer__links a{
+  display:block; padding: 12px 10px; border-radius: 10px; color:#fff;
+  background: transparent; border:1px solid transparent;
+}
+.drawer__links a:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.12) }
+
+/* Backdrop behind drawer */
+.drawer-backdrop{
+  position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 998;
+}
+.drawer-backdrop[hidden]{ display:none }
+
+/* Prevent body scroll when drawer open */
+.no-scroll{ overflow: hidden }
+
+
+
+
+
+/* RESPONSIVE-CSS */
+
+/* Large tablets / small laptops */
+@media (max-width: 1200px){
+  .header{ padding: 34px 24px; }
+  .search-container form{ max-width: 520px; }
+}
+
+/* Tablets & narrow laptops */
+@media (max-width: 1024px){
+  .header{ padding: 28px 20px; }
+  .nav-links{ gap: 28px; }
+  .product-container{ gap: 16px; padding: 18px; }
+}
+
+/* Stacking header without changing HTML */
+@media (max-width: 900px){
+  .header{
+    flex-wrap: wrap;           
+    row-gap: 10px;
+    padding: 20px 16px;
+  }
+  .search-container{
+    flex-basis: 100%;           
+    order: 3;
+  }
+  .search-container form{ max-width: 100%; }
+  .profile-container{ padding-right: 0; }
+  .product-container{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Compact nav & inputs on small phones/tablets */
+@media (max-width: 768px){
+  .navbar-heading{ padding: .55rem .9rem; }
+  .navbar-contact-info > a{ padding-left: 1rem; }
+  .nav-links{
+    gap: 16px;                  
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .nav-links li a{
+    padding-left: 0;          
+    font-size: 17px;
+  }
+  .product-container{ gap: 14px; padding: 16px; }
+  .heading{ margin-bottom: 28px; }
+}
+
+/* Phones: single-column products */
+@media (max-width: 560px){
+  .header{ padding: 16px 12px; }
+  .search-container input{
+    height: 44px;
+    width: 100%;               
+  }
+  .search{
+    height: 44px;
+    min-width: 44px;
+  }
+  .profile-container i{
+    font-size: 24px;
+    padding: 6px;
+  }
+  .heading h1{ font-size: clamp(24px, 7vw, 36px); }
+  .product-container{ grid-template-columns: 1fr; }
+  .web-info{
+    flex-wrap: wrap;            /* footer stacks */
+    gap: 24px;
+    padding: 2rem 1.25rem;
+  }
+  .web-info ul{ width: 100%; } 
+}
+
+/* Very small devices */
+@media (max-width: 420px){
+  .navbar-profile{ font-size: 14px; }
+  .nav-links{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .product-details{ padding: 12px; }
+  .actions{ grid-template-columns: 1fr; }
+}
+
+/* Tiny phones */
+@media (max-width: 360px){
+  .search-container input{ min-width: 0; }
+  .profile-container{ gap: .4rem; }
+}
+
+/* Accessibility: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
