@@ -534,7 +534,7 @@ async function loadProductsFromFile(filename) {
         console.log(`Loaded ${externalImgGrid.length + externalSlideItems.length} products from ${filename}`);
         console.log(`Total products: ${allProducts.length}`);
     } catch (error) {
-        console.error(`Error loading products from ${shop.html}:`, error);
+        console.error(`Error loading products from "${filename}":`, error);
     }
 }
 
@@ -814,13 +814,14 @@ function createProductCard(item) {
         <img src="${img?.src || ''}" alt="${img?.alt || 'Product Image'}" style="
             width: 100%;
             height: 180px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 10px;
             margin-bottom: 1em;
         ">
         <h5 style="
             margin: 0.5em 0;
             font-size: 1.1em;
+            font-weight: bold;
             flex: 1;
             min-height: 3em;
             display: flex;
@@ -837,7 +838,7 @@ function createProductCard(item) {
             background-color: orange;
             color: white;
             border: none;
-            padding: 0.7em 1.5em;
+            padding: 0.4em 1.5em;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
@@ -909,94 +910,6 @@ function handleResponsive(e) {
 mediaQuery.addListener(handleResponsive);
 handleResponsive(mediaQuery);
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all add-to-cart buttons
-    const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
-    
-    addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Find the parent container
-            let productCard = this.closest('.slide-item');
-            if (!productCard) {
-                productCard = this.closest('.img-grid');
-            }
-            
-            if (productCard) {
-                // Get image
-                const img = productCard.querySelector('img');
-                const imageSrc = img ? img.src : '';
-                
-                // Get price
-                const priceElement = productCard.querySelector('.orange');
-                let price = 0;
-                if (priceElement) {
-                    const priceText = priceElement.textContent || priceElement.innerText;
-                    price = parseInt(priceText.replace(/\D/g, ''));
-                }
-                
-                // Get product name - improved extraction
-                let productName = 'Product';
-                const pElement = productCard.querySelector('p');
-                if (pElement) {
-                    // Get all text nodes
-                    let textContent = pElement.textContent || pElement.innerText;
-                    // Split by line breaks
-                    let lines = textContent.split(/\r?\n/).filter(line => line.trim());
-                    
-                    // Find product name (skip "New Arrival" and price lines)
-                    for (let i = 0; i < lines.length; i++) {
-                        let line = lines[i].trim();
-                        if (line && 
-                            line !== 'New Arrival' && 
-                            !line.match(/^[N₦]\s*[\d,]+/) && 
-                            line.length > 5) {
-                            productName = line;
-                            break;
-                        }
-                    }
-                }
-                
-                // Create product object
-                const product = {
-                    id: Date.now() + Math.random(),
-                    name: productName,
-                    price: price,
-                    quantity: 1,
-                    image: imageSrc
-                };
-                
-                // Get cart from localStorage
-                let cart = [];
-                try {
-                    const cartData = localStorage.getItem('cart');
-                    if (cartData) {
-                        cart = JSON.parse(cartData);
-                    }
-                } catch (error) {
-                    cart = [];
-                }
-                
-                // Check if item exists
-                const existingIndex = cart.findIndex(item => item.name === product.name);
-                if (existingIndex > -1) {
-                    cart[existingIndex].quantity += 1;
-                } else {
-                    cart.push(product);
-                }
-                
-                // Save to localStorage
-                try {
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                } catch (error) {
-                    alert('Failed to add item to cart');
-                    return;
-                }
-                
-                // Go to cart page
-                window.location.href = 'cart.html';
-            }
-        });
-    });
-});
+
+
+
