@@ -669,12 +669,62 @@ body{
 /* Hide navigation links and show hamburger only on smaller screens */
 @media (max-width: 768px) {
   /* Hide the nav links */
-  .nav-links {
+  /* .nav-links {
     display: none;
-  }
+  } */
 
   /* Ensure the hamburger shows */
   .hamburger {
     display: inline-flex !important;
   }
 }
+
+
+
+/* Move nav links to the left on smaller screens */
+@media (max-width: 768px){
+  .nav-links{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 10px 75px;
+    justify-content: start;   /* 👈 shift to the left */
+    align-content: start;
+    padding: 12px 16px 14px;
+    margin-left: 50px;
+    width: auto;
+    background: transparent;
+  }
+
+  .nav-links li{
+    list-style: none;
+    text-align: left;         /* 👈 align text left too */
+  }
+
+  .nav-links li a{
+    padding-left: 0;
+    font-size: 17px;
+    display: inline-block;
+  }
+
+  .navbar{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; /* 👈 ensure the navbar aligns left */
+    padding: .6em 1rem;
+  }
+}
+
+/* One column on very small phones */
+@media (max-width: 400px){
+  .nav-links{
+    grid-template-columns: 1fr;
+    justify-content: start;
+    width: 100%;
+  }
+  .nav-links li a{
+    display: block;
+    padding: 8px 0;
+  }
+}
+
+
