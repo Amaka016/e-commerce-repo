@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html" style="color: white; text-decoration: none;">Liquor Store</a></h1>
+            <nav class="header-nav">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="about-us.html">About Us</a>
+                <a href="shop.html">Shop</a>
+                <a href="cart.html" class="active">Cart</a>
+            </nav>
+            <div class="cart-icon">
+                <span id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Shopping Cart</h2>
+
+        <div id="cartEmpty" class="empty-cart">
+            <p>Your Cart Is Empty</p>
+            <button onclick="location.href='checkout.html'" class="btn-secondary">Continue Shopping</button>
+        </div>
+
+        <div id="cartContent" class="cart-content" style="display: none;">
+            <div class="cart-items" id="cartItems"></div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">N0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax:</span>
+                    <span id="tax">N0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="total">N0</span>
+                </div>
+                <button onclick="goToCheckout()" class="btn-primary">Proceed To Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="last-container">
+  <div class="web-info">
+    <ul class="first-row">
+      <li class="first-list"><b><a href="index.html">CHI&CO</a></b></li>
+      <li>Need Help?</li>
+      <li id="spacing">Visit our <a href="09073836287">Customer Support</a> 
+        <br>
+        for assistance or call us at 
+        <br>+2349073836287
+      </li>
+      <li><a href="amakajoseph48@gmail.com">Send Mail</a></li>
+      <li id="social-icons">
+        <i class="ri-whatsapp-line" id="whatsapp"></i>
+        <i class="ri-instagram-fill" id="instagram"></i>
+        <i class="ri-twitter-fill" id="twitter"></i>
+      </li>
+    </ul>
+
+    <ul class="second-row">
+      <li class="first-list"><b>Menu</b></li>
+      <li class="display-hidden"><a href="#">Shop</a>
+        <div class="hidden-option">
+          <a href="#">Best Deals</a>
+          <a href="#">New Arrivals</a>
+        </div>
+      </li>
+      <li class ="display-hidden"><a href="#">Spirit</a>
+        <div class="hidden-option">
+          <a href="#">Aperitis</a>
+          <a href="#">Accessories</a>
+          <a href="#">Brandy</a>
+          <a href="#">Cognac</a>
+          <a href="#">Gin</a>
+          <a href="#">Liqueur</a>
+          <a href="#">Rum</a>
+          <a href="#">Tequila</a>
+          <a href="#">Vodka</a>
+          <a href="#">Whiskey</a>
+        </div>
+      </li>
+
+      <li class ="display-hidden"><a href="#">Wine</a>
+        <div class="hidden-option">
+          <a href="#">Alcoholic wine</a>
+          <a href="#">Non-alcoholic wine</a>
+          <a href="#">Sparkling wine</a>
+        </div>
+      </li>
+
+      <li class ="display-hidden"><a href="#">Bear & Mixers</a>
+        <div class="hidden-option">
+          <a href="#">Bear</a>
+          <a href="#">Cider</a>
+          <a href="#">Energy drink</a>
+          <a href="#">Mixers</a>
+          <a href="#">Soft drink</a>
+        </div>
+      </li>
+
+      <li><a href="#">Champagne</a></li>
+      <li><a href="brands.html">Brands</a></li>
+      <li><a href="blog.html">Blogs</a></li>
+    </ul>
+
+    <ul class="third-row">
+      <li class="first-list"><b>Info</b></li>
+      <li><a href="about-us.html">About Us</a></li>
+      <li><a href="#">Customer support</a></li>
+      <li><a href="#">Delivery and returns</a></li>
+      <li><a href="#">Locations</a></li>
+      <li><a href="#">Payments</a></li>
+      <li><a href="#">Privacy and Policy</a></li>
+      <li><a href="#">Terms and conditions</a></li>
+    </ul>
+
+    <ul class="third-row">
+      <li class="first-list"><b>My Choice</b></li>
+      <li><a href="#">Favourites</a></li>
+      <li><a href="#">My orders</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="remark">
+  © 2025 by Chi&Co
+</div>
+    <script src="./cart.js"></script>
+</body>
+</html>
