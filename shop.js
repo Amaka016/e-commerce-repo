@@ -693,6 +693,64 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Get cart from localStorage
                 let cart = [];
+
+          document.addEventListener('DOMContentLoaded', function() {
+    // Get all add-to-cart buttons
+    const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
+    
+    addToCartButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Find the parent container
+            let productCard = this.closest('.slide-item');
+            if (!productCard) {
+                productCard = this.closest('.img-grid');
+            }
+            
+            if (productCard) {
+                // Get image
+                const img = productCard.querySelector('img');
+                const imageSrc = img ? img.src : '';
+                
+                // Get price
+                const priceElement = productCard.querySelector('.orange');
+                let price = 0;
+                if (priceElement) {
+                    const priceText = priceElement.textContent || priceElement.innerText;
+                    price = parseInt(priceText.replace(/\D/g, ''));
+                }
+                
+                // Get product name
+                let productName = 'Product';
+                const pElement = productCard.querySelector('p');
+                if (pElement) {
+                    let textContent = pElement.textContent || pElement.innerText;
+                    let lines = textContent.split(/\r?\n/).filter(line => line.trim());
+                    
+                    for (let i = 0; i < lines.length; i++) {
+                        let line = lines[i].trim();
+                        if (line && 
+                            line !== 'New Arrival' && 
+                            !line.match(/^[N₦]\s*[\d,]+/) && 
+                            line.length > 5) {
+                            productName = line;
+                            break;
+                        }
+                    }
+                }
+                
+                // Create product object
+                const product = {
+                    id: Date.now() + Math.random(),
+                    name: productName,
+                    price: price,
+                    quantity: 1,
+                    image: imageSrc
+                };
+                
+                // Get cart from localStorage
+                let cart = [];
                 try {
                     const cartData = localStorage.getItem('cart');
                     if (cartData) {
