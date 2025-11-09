@@ -182,6 +182,94 @@ h2{
 .btn-secondary:hover{
     background-color: #2980b9;
 }
+.web-info{
+    background-color: black;
+    font-size: 16.5px;
+    color: white;
+    padding: 4em 5em;
+    margin-top: 3em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.web-info a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.web-info #spacing{
+  line-height: 0.7cm;
+} 
+
+.hidden-option{
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    border-radius: .7em;
+    padding: .5em .7em;
+    white-space: nowrap;
+    opacity: 0;
+    position: absolute;
+}
+
+.web-info ul{
+    list-style: none;
+}
+
+.web-info li{
+    padding-bottom: 1.5em;
+    font-size: 1.1em;
+    font-weight: lighter;
+}
+
+.web-info .first-list{
+  font-weight: 550;
+}
+
+.display-hidden:hover .hidden-option{
+    opacity: 1;
+    transition: 0.4s ease;
+    transform: scale(1.1);
+}
+
+.web-info #social-icons{
+  margin-top: 10px;
+}
+
+#whatsapp{
+    background-color: green;
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+#instagram{
+    background-color: rgb(245, 107, 107);
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px; 
+    margin: 0 .5em; 
+}
+
+#twitter{
+    background-color: rgb(93, 170, 241);
+    font-size: 18px;
+    padding: .3em;
+    border-radius: 3px;  
+}
+
+.socials:hover {
+    transform: translateY(-15px);
+    transition: 0.4s ease-in-out;
+}
+
+.remark{
+  padding: 2px;
+    text-align: center;
+    margin: 1.5em 0;
+    color: #131212;
+}
 @media (max-width: 480px){
     .container{
         padding: 10px;
@@ -267,5 +355,4 @@ h2{
         font-size: 24px;
         margin-bottom: 20px;
     }
-
 }
