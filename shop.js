@@ -782,3 +782,73 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Shop cart bridge loaded!');
+    
+    // Get all "Add to Cart" buttons in shop page
+    const addToCartButtons = document.querySelectorAll('.btn a[href="cart.html"]');
+    
+    console.log('Found', addToCartButtons.length, 'Add to Cart buttons');
+    
+    addToCartButtons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Add to cart clicked!');
+            
+            const productCard = this.closest('.product-content-cover');
+            
+            if (productCard) {
+                const img = productCard.querySelector('.product-content img');
+                const imageSrc = img ? img.src : 'https://via.placeholder.com/80';
+                
+                let productName = 'Product';
+                const descElement = productCard.querySelector('.desc');
+                if (descElement) {
+                    productName = descElement.textContent.trim();
+                }
+                
+                let price = 0;
+                const priceElement = productCard.querySelector('.price');
+                if (priceElement) {
+                    const priceText = priceElement.textContent || priceElement.innerText;
+                    price = parseInt(priceText.replace(/\D/g, ''));
+                }
+                
+                const product = {
+                    id: Date.now() + Math.random(),
+                    name: productName,
+                    price: price,
+                    quantity: 1,
+                    image: imageSrc
+                };
+                
+                let cart = [];
+                try {
+                    const cartData = localStorage.getItem('cart');
+                    if (cartData) {
+                        cart = JSON.parse(cartData);
+                    }
+                } catch (error) {
+                    cart = [];
+                }
+                
+                const existingIndex = cart.findIndex(item => item.name === product.name);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (error) {
+                    alert('Failed to add item to cart');
+                    return;
+                }
+                
+                window.location.href = 'cart.html';
+            }
+        });
+    });
+});          
