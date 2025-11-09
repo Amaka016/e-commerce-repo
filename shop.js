@@ -693,7 +693,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Get cart from localStorage
                 let cart = [];
-
+                try {
+                    const cartData = localStorage.getItem('cart');
+                    if (cartData) {
+                        cart = JSON.parse(cartData);
+                    }
+                } catch (error) {
+                    cart = [];
+                }
+                
+                // Check if item exists
+                const existingIndex = cart.findIndex(item => item.name === product.name);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                // Save to localStorage
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (error) {
+                    alert('Failed to add item to cart');
+                    return;
+                }
+                
+                // Go to cart page
+                window.location.href = 'cart.html';
+            }
+        });
+    });
+});
           document.addEventListener('DOMContentLoaded', function() {
     // Get all add-to-cart buttons
     const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
