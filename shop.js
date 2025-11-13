@@ -693,7 +693,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Get cart from localStorage
                 let cart = [];
-
+                try {
+                    const cartData = localStorage.getItem('cart');
+                    if (cartData) {
+                        cart = JSON.parse(cartData);
+                    }
+                } catch (error) {
+                    cart = [];
+                }
+                
+                // Check if item exists
+                const existingIndex = cart.findIndex(item => item.name === product.name);
+                if (existingIndex > -1) {
+                    cart[existingIndex].quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                // Save to localStorage
+                try {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                } catch (error) {
+                    alert('Failed to add item to cart');
+                    return;
+                }
+                
+                // Go to cart page
+                window.location.href = 'cart.html';
+            }
+        });
+    });
+});
           document.addEventListener('DOMContentLoaded', function() {
     // Get all add-to-cart buttons
     const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
@@ -783,9 +813,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-              
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Shop.js loaded!');
+    console.log('Shop cart bridge loaded!');
     
     // Get all "Add to Cart" buttons in shop page
     const addToCartButtons = document.querySelectorAll('.btn a[href="cart.html"]');
@@ -797,34 +826,25 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             console.log('Add to cart clicked!');
             
-            // Find the parent product container
             const productCard = this.closest('.product-content-cover');
-            console.log('Product card:', productCard);
             
             if (productCard) {
-                // Get image
                 const img = productCard.querySelector('.product-content img');
                 const imageSrc = img ? img.src : 'https://via.placeholder.com/80';
-                console.log('Image:', imageSrc);
                 
-                // Get product name from .desc
                 let productName = 'Product';
                 const descElement = productCard.querySelector('.desc');
                 if (descElement) {
                     productName = descElement.textContent.trim();
                 }
-                console.log('Product name:', productName);
                 
-                // Get price from .price (not .orange)
                 let price = 0;
                 const priceElement = productCard.querySelector('.price');
                 if (priceElement) {
                     const priceText = priceElement.textContent || priceElement.innerText;
                     price = parseInt(priceText.replace(/\D/g, ''));
                 }
-                console.log('Price:', price);
                 
-                // Create product object
                 const product = {
                     id: Date.now() + Math.random(),
                     name: productName,
@@ -833,9 +853,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     image: imageSrc
                 };
                 
-                console.log('Product object:', product);
-                
-                // Get cart from localStorage
                 let cart = [];
                 try {
                     const cartData = localStorage.getItem('cart');
@@ -843,37 +860,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         cart = JSON.parse(cartData);
                     }
                 } catch (error) {
-                    console.error('Error loading cart:', error);
                     cart = [];
                 }
                 
-                console.log('Current cart:', cart);
-                
-                // Check if item exists
                 const existingIndex = cart.findIndex(item => item.name === product.name);
                 if (existingIndex > -1) {
                     cart[existingIndex].quantity += 1;
-                    console.log('Updated quantity for existing item');
                 } else {
                     cart.push(product);
-                    console.log('Added new item to cart');
                 }
                 
-                // Save to localStorage
                 try {
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    console.log('Cart saved to localStorage:', cart);
                 } catch (error) {
-                    console.error('Error saving cart:', error);
                     alert('Failed to add item to cart');
                     return;
                 }
                 
-                // Go to cart page
                 window.location.href = 'cart.html';
-            } else {
-                console.error('Product card not found!');
             }
         });
     });
-});
+});          

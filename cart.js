@@ -125,6 +125,8 @@ function renderCart(){
     const cartContent = document.getElementById('cartContent');
     const cartCount = document.getElementById('cartCount');
 
+    cart=JSON.parse(localStorage.getItem('cart')) || [];
+
     if (cart.length === 0){
         cartEmpty.style.display = 'block';
         cartContent.style.display = 'none';
@@ -135,20 +137,20 @@ function renderCart(){
     cartContent.style.display = 'block';
     cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    cartItemsDiv.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <img scr="${item.imamge}" alt="${item.name}" class"item-image">
+    cartItemsDiv.innerHTML = cart.map((item, index) => `
+        <div class="cart-item"  data-index="${index}">
+            <img scr="${item.imamge}" alt="${item.name}" class"item-image" onerror="this.src='https: //via.placeholder.com/80'">
             <div class"item-details">
                 <div class="item-name">${item.name}</div>
                 <div class="item-price">N${item.price.toLocaleString()}</div>
             </div>
             <div class"item-controls">
                 <div class="quantity-control">
-                    <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <button onclick="window.updateQuantity(${index}, -1)">-</button>
                     <span>${item.quantity}</span>
-                    <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button onclick="window.updateQuantity(${index}, 1)">+</button>
                 </div>
-            <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+            <button class="remove-btn" onclick="window.removeItemByName('${item.name.replace(/'/g,"\\'")}')">Remove</button>
             </div>
         </div>    
         `).join('');
@@ -156,27 +158,25 @@ function renderCart(){
         updateSummary();
     }
 
-    function updateQuantity(id, change) {
+    function updateQuantity(index, change) {
         cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        const item = cart.find(i => i.id === id);
-        if (item){
-            item.quantity += change;
-            if(item.quantity <= 0){
-                removeItem(id);
-            } else{
-                localStorage.setItem('cart', JSON.stringify(cart));
+        if (cart[index]){
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0){
+                cart.splice(index, 1);
             }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
         }
     }
 
-    function removeItem(id) {
+    function removeItemByName(name) {
         cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        cart = cart.filter(i => i.id !== id);
+        cart = cart.filter(item => item.name !== name);
 
         localStorage.setItem('cart', JSON.stringify(cart));
-
         renderCart();
     }
 
@@ -207,6 +207,9 @@ function goToCheckout() {
     sessionStorage.setItem('checkoutData', JSON.stringify(cartData));
     window.location.href = 'checkout.html';
 }
+
+window.updateQuantity = updateQuantity;
+window.removeItemByName = removeItemByName;
 
 document.addEventListener('DOMContentLoaded', function(){
     renderCart();
