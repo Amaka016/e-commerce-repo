@@ -504,6 +504,7 @@ startNavbarNotesRotation()
 //     return card;
 // }
 
+
 // Get products from current page
 let listOfItems = document.querySelectorAll('.img-grid');
 let slideItems = document.querySelectorAll('.slide-item');

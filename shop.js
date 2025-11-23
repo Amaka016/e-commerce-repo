@@ -633,6 +633,252 @@ handleResponsive(mediaQuery);
   });
 })();
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Get all add-to-cart buttons
+//     const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
+    
+//     addToCartButtons.forEach(function(button) {
+//         button.addEventListener('click', function(e) {
+//             e.preventDefault();
+            
+//             // Find the parent container
+//             let productCard = this.closest('.slide-item');
+//             if (!productCard) {
+//                 productCard = this.closest('.img-grid');
+//             }
+            
+//             if (productCard) {
+//                 // Get image
+//                 const img = productCard.querySelector('img');
+//                 const imageSrc = img ? img.src : '';
+                
+//                 // Get price
+//                 const priceElement = productCard.querySelector('.orange');
+//                 let price = 0;
+//                 if (priceElement) {
+//                     const priceText = priceElement.textContent || priceElement.innerText;
+//                     price = parseInt(priceText.replace(/\D/g, ''));
+//                 }
+                
+//                 // Get product name - improved extraction
+//                 let productName = 'Product';
+//                 const pElement = productCard.querySelector('p');
+//                 if (pElement) {
+//                     // Get all text nodes
+//                     let textContent = pElement.textContent || pElement.innerText;
+//                     // Split by line breaks
+//                     let lines = textContent.split(/\r?\n/).filter(line => line.trim());
+                    
+//                     // Find product name (skip "New Arrival" and price lines)
+//                     for (let i = 0; i < lines.length; i++) {
+//                         let line = lines[i].trim();
+//                         if (line && 
+//                             line !== 'New Arrival' && 
+//                             !line.match(/^[N₦]\s*[\d,]+/) && 
+//                             line.length > 5) {
+//                             productName = line;
+//                             break;
+//                         }
+//                     }
+//                 }
+                
+//                 // Create product object
+//                 const product = {
+//                     id: Date.now() + Math.random(),
+//                     name: productName,
+//                     price: price,
+//                     quantity: 1,
+//                     image: imageSrc
+//                 };
+                
+//                 // Get cart from localStorage
+//                 let cart = [];
+
+//           document.addEventListener('DOMContentLoaded', function() {
+//     // Get all add-to-cart buttons
+//     const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
+    
+//     addToCartButtons.forEach(function(button) {
+//         button.addEventListener('click', function(e) {
+//             e.preventDefault();
+            
+//             // Find the parent container
+//             let productCard = this.closest('.slide-item');
+//             if (!productCard) {
+//                 productCard = this.closest('.img-grid');
+//             }
+            
+//             if (productCard) {
+//                 // Get image
+//                 const img = productCard.querySelector('img');
+//                 const imageSrc = img ? img.src : '';
+                
+//                 // Get price
+//                 const priceElement = productCard.querySelector('.orange');
+//                 let price = 0;
+//                 if (priceElement) {
+//                     const priceText = priceElement.textContent || priceElement.innerText;
+//                     price = parseInt(priceText.replace(/\D/g, ''));
+//                 }
+                
+//                 // Get product name
+//                 let productName = 'Product';
+//                 const pElement = productCard.querySelector('p');
+//                 if (pElement) {
+//                     let textContent = pElement.textContent || pElement.innerText;
+//                     let lines = textContent.split(/\r?\n/).filter(line => line.trim());
+                    
+//                     for (let i = 0; i < lines.length; i++) {
+//                         let line = lines[i].trim();
+//                         if (line && 
+//                             line !== 'New Arrival' && 
+//                             !line.match(/^[N₦]\s*[\d,]+/) && 
+//                             line.length > 5) {
+//                             productName = line;
+//                             break;
+//                         }
+//                     }
+//                 }
+                
+//                 // Create product object
+//                 const product = {
+//                     id: Date.now() + Math.random(),
+//                     name: productName,
+//                     price: price,
+//                     quantity: 1,
+//                     image: imageSrc
+//                 };
+                
+//                 // Get cart from localStorage
+//                 let cart = [];
+//                 try {
+//                     const cartData = localStorage.getItem('cart');
+//                     if (cartData) {
+//                         cart = JSON.parse(cartData);
+//                     }
+//                 } catch (error) {
+//                     cart = [];
+//                 }
+                
+//                 // Check if item exists
+//                 const existingIndex = cart.findIndex(item => item.name === product.name);
+//                 if (existingIndex > -1) {
+//                     cart[existingIndex].quantity += 1;
+//                 } else {
+//                     cart.push(product);
+//                 }
+                
+//                 // Save to localStorage
+//                 try {
+//                     localStorage.setItem('cart', JSON.stringify(cart));
+//                 } catch (error) {
+//                     alert('Failed to add item to cart');
+//                     return;
+//                 }
+                
+//                 // Go to cart page
+//                 window.location.href = 'cart.html';
+//             }
+//         });
+//     });
+// });
+
+              
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log('Shop.js loaded!');
+    
+//     // Get all "Add to Cart" buttons in shop page
+//     const addToCartButtons = document.querySelectorAll('.btn a[href="cart.html"]');
+    
+//     console.log('Found', addToCartButtons.length, 'Add to Cart buttons');
+    
+//     addToCartButtons.forEach(function(button) {
+//         button.addEventListener('click', function(e) {
+//             e.preventDefault();
+//             console.log('Add to cart clicked!');
+            
+//             // Find the parent product container
+//             const productCard = this.closest('.product-content-cover');
+//             console.log('Product card:', productCard);
+            
+//             if (productCard) {
+//                 // Get image
+//                 const img = productCard.querySelector('.product-content img');
+//                 const imageSrc = img ? img.src : 'https://via.placeholder.com/80';
+//                 console.log('Image:', imageSrc);
+                
+//                 // Get product name from .desc
+//                 let productName = 'Product';
+//                 const descElement = productCard.querySelector('.desc');
+//                 if (descElement) {
+//                     productName = descElement.textContent.trim();
+//                 }
+//                 console.log('Product name:', productName);
+                
+//                 // Get price from .price (not .orange)
+//                 let price = 0;
+//                 const priceElement = productCard.querySelector('.price');
+//                 if (priceElement) {
+//                     const priceText = priceElement.textContent || priceElement.innerText;
+//                     price = parseInt(priceText.replace(/\D/g, ''));
+//                 }
+//                 console.log('Price:', price);
+                
+//                 // Create product object
+//                 const product = {
+//                     id: Date.now() + Math.random(),
+//                     name: productName,
+//                     price: price,
+//                     quantity: 1,
+//                     image: imageSrc
+//                 };
+                
+//                 console.log('Product object:', product);
+                
+//                 // Get cart from localStorage
+//                 let cart = [];
+//                 try {
+//                     const cartData = localStorage.getItem('cart');
+//                     if (cartData) {
+//                         cart = JSON.parse(cartData);
+//                     }
+//                 } catch (error) {
+//                     console.error('Error loading cart:', error);
+//                     cart = [];
+//                 }
+                
+//                 console.log('Current cart:', cart);
+                
+//                 // Check if item exists
+//                 const existingIndex = cart.findIndex(item => item.name === product.name);
+//                 if (existingIndex > -1) {
+//                     cart[existingIndex].quantity += 1;
+//                     console.log('Updated quantity for existing item');
+//                 } else {
+//                     cart.push(product);
+//                     console.log('Added new item to cart');
+//                 }
+                
+//                 // Save to localStorage
+//                 try {
+//                     localStorage.setItem('cart', JSON.stringify(cart));
+//                     console.log('Cart saved to localStorage:', cart);
+//                 } catch (error) {
+//                     console.error('Error saving cart:', error);
+//                     alert('Failed to add item to cart');
+//                     return;
+//                 }
+                
+//                 // Go to cart page
+//                 window.location.href = 'cart.html';
+//             } else {
+//                 console.error('Product card not found!');
+//             }
+//         });
+//     });
+// });
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get all add-to-cart buttons
     const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
@@ -693,64 +939,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Get cart from localStorage
                 let cart = [];
-
-          document.addEventListener('DOMContentLoaded', function() {
-    // Get all add-to-cart buttons
-    const addToCartButtons = document.querySelectorAll('a[id="add-to-cart"]');
-    
-    addToCartButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Find the parent container
-            let productCard = this.closest('.slide-item');
-            if (!productCard) {
-                productCard = this.closest('.img-grid');
-            }
-            
-            if (productCard) {
-                // Get image
-                const img = productCard.querySelector('img');
-                const imageSrc = img ? img.src : '';
-                
-                // Get price
-                const priceElement = productCard.querySelector('.orange');
-                let price = 0;
-                if (priceElement) {
-                    const priceText = priceElement.textContent || priceElement.innerText;
-                    price = parseInt(priceText.replace(/\D/g, ''));
-                }
-                
-                // Get product name
-                let productName = 'Product';
-                const pElement = productCard.querySelector('p');
-                if (pElement) {
-                    let textContent = pElement.textContent || pElement.innerText;
-                    let lines = textContent.split(/\r?\n/).filter(line => line.trim());
-                    
-                    for (let i = 0; i < lines.length; i++) {
-                        let line = lines[i].trim();
-                        if (line && 
-                            line !== 'New Arrival' && 
-                            !line.match(/^[N₦]\s*[\d,]+/) && 
-                            line.length > 5) {
-                            productName = line;
-                            break;
-                        }
-                    }
-                }
-                
-                // Create product object
-                const product = {
-                    id: Date.now() + Math.random(),
-                    name: productName,
-                    price: price,
-                    quantity: 1,
-                    image: imageSrc
-                };
-                
-                // Get cart from localStorage
-                let cart = [];
                 try {
                     const cartData = localStorage.getItem('cart');
                     if (cartData) {
@@ -779,11 +967,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Go to cart page
                 window.location.href = 'cart.html';
             }
-        });
-    });
-});
+        }); 
+    }); 
+}); 
 
               
+// ✅ SECOND ADD-TO-CART IMPLEMENTATION FOR SHOP PAGE
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Shop.js loaded!');
     
@@ -873,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = 'cart.html';
             } else {
                 console.error('Product card not found!');
-            }
-        });
-    });
-});
+            } 
+        }); 
+    }); 
+}); 

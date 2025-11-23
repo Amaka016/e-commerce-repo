@@ -252,13 +252,9 @@ body, html {
     /* margin-left: 9em; */
   }
 
-  .navbar-extras .fa-solid{
-    font-size: .8em;
-    padding-top: 2%;
-  }
-
   .navbar-extras{
     margin-left: .3em;
+    display: flex;
   }
 
   .navbar-products{
@@ -267,7 +263,7 @@ body, html {
 
   .brand{
     grid-template-columns: 1fr;
-    margin-left: 10em;
+    margin-left: 8.5em;
   }
 
   /* .brand{

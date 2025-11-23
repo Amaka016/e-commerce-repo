@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.querySelector(".search-container input");
   const grid  = document.querySelector(".blog__grid");
   if (!form || !input || !grid) return;
-
+tainer
   const cards = Array.from(grid.querySelectorAll(".card"));
 
   // Create the "no match" message element
@@ -101,7 +101,9 @@ startNavbarNotesRotation()
 
 
 
+
 let searchInput = document.querySelector('.search-container input');
+
 
 // Track if we've already loaded external products
 let externalProductsLoaded = false;
@@ -139,11 +141,11 @@ async function loadAllProducts() {
     const indexProducts = await loadProductsFromFile('index.html');
     
     // You can add more pages here
-    // const shopProducts = await loadProductsFromFile('shop.html');
+    const shopProducts = await loadProductsFromFile('shop.html');
     // const brandProducts = await loadProductsFromFile('brands.html');
     
     // Merge all products
-    allProducts = [...currentProducts, ...indexProducts];
+    allProducts = [...currentProducts, ...indexProducts, ...shopProducts];
     
     console.log(`Total products loaded: ${allProducts.length}`);
     externalProductsLoaded = true;
